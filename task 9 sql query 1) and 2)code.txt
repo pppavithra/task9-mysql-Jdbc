@@ -1,0 +1,256 @@
+Microsoft Windows [Version 10.0.22631.3296]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+1)Table creation and queries----------
+
+mysql> create database emp_detailsdb;
+Query OK, 1 row affected (3.95 sec)
+mysql> use emp_detailsdb;
+Database changed
+mysql> create table employee
+    -> (empno integer,
+    -> ename char(15),
+    -> job char(15),
+    -> mgr integer,
+    -> hiredate date,
+    -> sal int,
+    -> comm integer,
+    -> deptno integer);
+Query OK, 0 rows affected (7.96 sec)
+
+mysql>
+       show tables;
++-------------------------+
+| Tables_in_emp_detailsdb |
++-------------------------+
+| employee                |
++-------------------------+
+1 row in set (0.35 sec)
+
+mysql> describe employee;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| empno    | int      | YES  |     | NULL    |       |
+| ename    | char(15) | YES  |     | NULL    |       |
+| job      | char(15) | YES  |     | NULL    |       |
+| mgr      | int      | YES  |     | NULL    |       |
+| hiredate | date     | YES  |     | NULL    |       |
+| sal      | int      | YES  |     | NULL    |       |
+| comm     | int      | YES  |     | NULL    |       |
+| deptno   | int      | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+8 rows in set (0.11 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8369,"SMITH","CLERK",8902,'1990-12-18',800.00,NULL,20);
+Query OK, 1 row affected (1.28 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8499,"ANYA","SALESMAN",8698,'1991-02-20',1600.00,300.00,
+30);
+Query OK, 1 row affected (0.58 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8521,"SETH","SALESMAN",8698,'1991-02-22',1250.00,500.00,
+30);
+Query OK, 1 row affected (0.51 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8566,"MAHADEVAN","MANAGER",8839,'1991-04-02',2985.00,NULL,20);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8654,"MOMIN","SALESMAN",8698,'1991-09-28',1250.00,1400.00,30);
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8698,"BINA","MANAGER",8839,'1991-05-01',2850.00,NULL,30);
+Query OK, 1 row affected (0.50 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8882,"SHIVANSH","MANAGER",8839,'1991-06-09',2450.00,NULL,10);
+Query OK, 1 row affected (0.55 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8888,"SCOTT","ANALYST",8566,'1992-12-09',3000.00,NULL,20);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8839,"AMIR","PRESIDENT",NULL,'1991-11-18',5000.00,NULL,10);
+Query OK, 1 row affected (0.52 sec)
+
+mysql> insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)values(8844,"KULDEEP","SALESMAN",8698,'1991-09-08',1500.00,0.00,30);
+Query OK, 1 row affected (0.24 sec)
+
+mysql> select * from employee;
++-------+-----------+-----------+------+------------+------+------+--------+
+| empno | ename     | job       | mgr  | hiredate   | sal  | comm | deptno |
++-------+-----------+-----------+------+------------+------+------+--------+
+|  8369 | SMITH     | CLERK     | 8902 | 1990-12-18 |  800 | NULL |     20 |
+|  8499 | ANYA      | SALESMAN  | 8698 | 1991-02-20 | 1600 |  300 |     30 |
+|  8521 | SETH      | SALESMAN  | 8698 | 1991-02-22 | 1250 |  500 |     30 |
+|  8566 | MAHADEVAN | MANAGER   | 8839 | 1991-04-02 | 2985 | NULL |     20 |
+|  8566 | MAHADEVAN | MANAGER   | 8839 | 1991-04-02 | 2985 | NULL |     20 |
+|  8654 | MOMIN     | SALESMAN  | 8698 | 1991-09-28 | 1250 | 1400 |     30 |
+|  8698 | BINA      | MANAGER   | 8839 | 1991-05-01 | 2850 | NULL |     30 |
+|  8882 | SHIVANSH  | MANAGER   | 8839 | 1991-06-09 | 2450 | NULL |     10 |
+|  8888 | SCOTT     | ANALYST   | 8566 | 1992-12-09 | 3000 | NULL |     20 |
+|  8839 | AMIR      | PRESIDENT | NULL | 1991-11-18 | 5000 | NULL |     10 |
+|  8844 | KULDEEP   | SALESMAN  | 8698 | 1991-09-08 | 1500 |    0 |     30 |
++-------+-----------+-----------+------+------------+------+------+--------+
+11 rows in set (0.13 sec)
+
+mysql> select ename,sal from employee WHERE sal>=2200;
++-----------+------+
+| ename     | sal  |
++-----------+------+
+| MAHADEVAN | 2985 |
+| MAHADEVAN | 2985 |
+| BINA      | 2850 |
+| SHIVANSH  | 2450 |
+| SCOTT     | 3000 |
+| AMIR      | 5000 |
++-----------+------+
+6 rows in set (0.31 sec)
+
+mysql> select empno,ename,job,mgr,hiredate,sal,comm,deptno from empl
++-------+-----------+-----------+------+------------+------+------+--------+
+| empno | ename     | job       | mgr  | hiredate   | sal  | comm | deptno |
++-------+-----------+-----------+------+------------+------+------+--------+
+|  8369 | SMITH     | CLERK     | 8902 | 1990-12-18 |  800 | NULL |     20 |
+|  8566 | MAHADEVAN | MANAGER   | 8839 | 1991-04-02 | 2985 | NULL |     20 |
+|  8566 | MAHADEVAN | MANAGER   | 8839 | 1991-04-02 | 2985 | NULL |     20 |
+|  8698 | BINA      | MANAGER   | 8839 | 1991-05-01 | 2850 | NULL |     30 |
+|  8882 | SHIVANSH  | MANAGER   | 8839 | 1991-06-09 | 2450 | NULL |     10 |
+|  8888 | SCOTT     | ANALYST   | 8566 | 1992-12-09 | 3000 | NULL |     20 |
+|  8839 | AMIR      | PRESIDENT | NULL | 1991-11-18 | 5000 | NULL |     10 |
++-------+-----------+-----------+------+------------+------+------+--------+
+7 rows in set (1.39 sec)
+       
+mysql> select ename,sal from employee where sal not between  2500 and 4000;
++----------+------+
+| ename    | sal  |
++----------+------+
+| SMITH    |  800 |
+| ANYA     | 1600 |
+| SETH     | 1250 |
+| MOMIN    | 1250 |
+| SHIVANSH | 2450 |
+| AMIR     | 5000 |
+| KULDEEP  | 1500 |
++----------+------+
+7 rows in set (0.07 sec)
+
+mysql> select ename,job,sal from employee where mgr is NULL;
++-------+-----------+------+
+| ename | job       | sal  |
++-------+-----------+------+
+| AMIR  | PRESIDENT | 5000 |
++-------+-----------+------+
+1 row in set (0.01 sec)
+
+mysql> select ename from employee where ename like '__A%';
+Empty set (0.01 sec)
+
+
+mysql> select ename from employee where ename like '%t';
++-------+
+| ename |
++-------+
+| SCOTT |
++-------+
+1 row in set (0.51 sec)
+
+
+2)JDBC-----------
+coding:pom.xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>javatodatabase</groupId>
+  <artifactId>javatodatabase</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.3.0</version>
+</dependency>
+</dependencies>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+coding:javatodatabase
+package com.javatodatabase;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+public class jdbcprogram {
+
+	public static void main(String[] args) {
+		
+		
+	String db_url="jdbc:mysql://localhost:3306/";
+	String user="root";
+	String password="root";
+	
+	try {
+       Connection connection=DriverManager.getConnection(db_url,user,password);
+    		 if(connection!=null) {
+    			 System.out.println("The database connection was successfull.");
+    		 }else {
+    			 System.out.println("The database connection was not successfull.");
+    		 }
+       Statement statement= connection.createStatement();
+       
+       String createDB="create database testdb";
+       String use="use testdb";
+       
+       String createtable ="create table emptable(empcode int,empname varchar(20),empAge int,empsal int)";
+       String select ="select * from emptable";	
+       String insert="insert into emptable values(101,'jenny',25,10000),"+"(102,'jacky',30,20000),"+"(103,'jeo',20,40000),"+"(104,'john',40,80000),"+"(105,'shameer',25,90000)";
+       
+       statement.execute(createDB);
+       statement.execute(use);
+       statement.execute(createtable);
+       statement.execute(insert);
+       
+       ResultSet rs=statement.executeQuery(select);
+       System.out.println("======================");
+       
+       while(rs.next()) {
+    	   System.out.println(rs.getInt("empcode")+ " "+rs.getString("empname")+" "+rs.getInt("empAge")+" "+rs.getInt("empsal"));
+       }
+       connection.close();
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}
+	}
+}
+Description : In create java connectivity to database in backend process will excueted.
+
+
